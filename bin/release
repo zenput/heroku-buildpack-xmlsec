@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+echo "---"
+echo "addons:"
+echo "config_vars:"
+echo "  LD_LIBRARY_PATH: /app/.heroku/xmlsec1-1.2/lib"
+echo "default_process_types:"
+

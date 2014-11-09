@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+set -e
+
+BUILD_DIR=$1
+
+ARCHIVE_NAME="xmlsec1-1.2"
+ZIP_FILE_NAME="${ARCHIVE_NAME}.tgz"
+DOWNLOAD_URL="https://s3.amazonaws.com/mmvendored/${ZIP_FILE_NAME}"
+
+# Create the install directory
+
+INSTALL_PATH="${BUILD_DIR}/vendor/xmlsec1"
+
+mkdir -p $INSTALL_PATH
+
+# Download the archive
+
+echo "-----> Fetching ${ZIP_FILE_NAME}"
+
+ZIP_PATH="${BUILD_DIR}/${ZIP_FILE_NAME}"
+
+curl -s -L -o $ZIP_PATH $DOWNLOAD_URL
+tar -zxf $ZIP_PATH -C $INSTALL_PATH
+rm $ZIP_PATH
+
+# export path
+
+echo "-----> Exporting path"
+
+PROFILE_PATH="$BUILD_DIR/.profile.d/xmlsec1.sh"
+mkdir -p $(dirname $PROFILE_PATH)
+echo 'export PATH="$PATH:vendor/xmlsec1/bin"' >> $PROFILE_PATH
+echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:vendor/xmlsec1/lib"' >> $PROFILE_PATH
+
+# export xmlsec loc and flags
+
+echo "-----> Exporting flags"
+
+export LIBXMLSEC1=${INSTALL_PATH}
+export CFLAGS="-I${INSTALL_PATH}/include/xmlsec1"
+
+# finish
+
+echo "-----> Installed xmlsec1"
+
