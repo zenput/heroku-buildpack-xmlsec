@@ -3,7 +3,7 @@ Build and install xmlsec1 for use with Heroku
 You may need to use this buildpack in conjunction with another;
 Use heroku-buildpack-multi to build multiple buildpacks:
 
-    heroku config:add BUILDPACK_URL=https://github.com/even/heroku-buildpack-multi.git
+    heroku config:add BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-multi.git
 
 Example .buildpacks file:
 
