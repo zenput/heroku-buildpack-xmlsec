@@ -1,4 +1,8 @@
-Build and install xmlsec1 for use with Heroku
+# heroku-buildpack-xmlsec
+
+A buildpack for installing xmlsec1 on Heroku
+
+## Usage
 
 You may need to use this buildpack in conjunction with another;
 Use heroku-buildpack-multi to build multiple buildpacks:
@@ -8,7 +12,7 @@ Use heroku-buildpack-multi to build multiple buildpacks:
 Example .buildpacks file:
 
     https://github.com/evenco/heroku-buildpack-xmlsec.git
-    https://github.com/evenco/heroku-buildpack-go.git
+    https://github.com/kr/heroku-buildpack-go.git
 
 Once xmlsec1 is installed via the buildpack:
 
