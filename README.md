@@ -12,10 +12,10 @@ Use heroku-buildpack-multi to build multiple buildpacks:
 
 Example .buildpacks file:
 
-    https://github.com/evenco/heroku-buildpack-xmlsec.git
-    https://github.com/kr/heroku-buildpack-go.git
+    https://github.com/strydercorp/heroku-buildpack-xmlsec.git
+    https://github.com/heroku/heroku-buildpack-ruby.git
 
-Once xmlsec1 is installed via the buildpack:
+Once xmlsec1 is installed via the buildpack you can run it with:
 
     heroku run xmlsec1
 
