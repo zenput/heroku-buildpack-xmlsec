@@ -4,9 +4,8 @@ set -e
 
 BUILD_DIR=$1
 
-ARCHIVE_NAME="xmlsec1-1.2"
-ZIP_FILE_NAME="${ARCHIVE_NAME}.tgz"
-DOWNLOAD_URL="https://s3.amazonaws.com/mmvendored/${ZIP_FILE_NAME}"
+ZIP_FILE_NAME="xmlsec1-1.2-cedar14.tgz"
+DOWNLOAD_URL="https://s3.amazonaws.com/handshake-public/${ZIP_FILE_NAME}"
 
 # Create the install directory
 
