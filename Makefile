@@ -12,8 +12,7 @@ shell:
 	docker run --rm --name $(NAME)-$(INSTANCE) -i -t $(NS)/$(NAME):$(VERSION) /bin/bash
 
 release:
-	docker run --rm --name $(NAME)-$(INSTANCE) $(NS)/$(NAME):$(VERSION) > ./bin/xmlsec1
-	chmod +x ./bin/xmlsec1
+	docker run --rm --name $(NAME)-$(INSTANCE) $(NS)/$(NAME):$(VERSION) > ./xmlsec.tar.gz
 
 rm:
 	docker rm $(NAME)-$(INSTANCE)

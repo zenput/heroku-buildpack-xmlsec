@@ -9,5 +9,7 @@ RUN gpg --keyserver keyserver.ubuntu.com --recv-key 9E1D829E && \
     tar xvf xmlsec1-${VERSION}.tar.gz
 
 WORKDIR ./xmlsec1-${VERSION}
-RUN ./configure --enable-static --enable-static-linking && make -j `nproc`
-CMD cat ./apps/xmlsec1
+RUN ./configure --enable-static --enable-static-linking --disable-docs --disable-shared --disable-apps-crypto-dl --disable-crypto-dl --prefix=$HOME && \
+    make -j `nproc`
+RUN make install prefix=$HOME
+CMD tar -zcf - -C $HOME bin lib include
