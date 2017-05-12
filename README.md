@@ -64,7 +64,7 @@ The downside of this is that it expects you to have Docker installed locally.
 $ export VERSION=1.2.24 # or whatever the version you want to build
 $ make build
 $ make release
-$ git add xmlsec.tar.gz
+$ git add xmlsec.*
 $ git commit -m "update to version $VERSION"
 $ git tag -a $VERSION -m "update to latest version"
 $ git push --follow-tags

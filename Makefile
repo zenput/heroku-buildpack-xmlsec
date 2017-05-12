@@ -5,7 +5,10 @@ VERSION ?= 1.2.24
 
 .PHONY: build shell rm build release rmi
 
-build:
+xmlsec1-${VERSION}.sig:
+	wget https://www.aleksey.com/xmlsec/download/xmlsec1-${VERSION}.sig
+
+build: xmlsec1-${VERSION}.sig
 	docker build -t $(NS)/$(NAME):$(VERSION) --build-arg VERSION=${VERSION} .
 
 shell:
