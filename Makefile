@@ -21,6 +21,6 @@ rmi:
 	docker rmi $(NS)/$(NAME)
 
 clean:
-	rm ./bin/xmlsec1
+	rm ./xmlsec1.tar.gz
 
 default: build
