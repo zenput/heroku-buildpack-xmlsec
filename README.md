@@ -6,7 +6,7 @@ A buildpack for installing xmlsec1 on Heroku
 
 You may need to use this buildpack in conjunction with another; use the `heroku` cli 
 
-    heroku buildpacks:add https://github.com/uktrade/heroku-buildpack-xmlsec#1.2.25
+    heroku buildpacks:add https://github.com/uktrade/heroku-buildpack-xmlsec#1.2.26
     
 or use the heroku admin website to add that buildpack.
 
@@ -32,7 +32,7 @@ an updated version without relying on third-parties.
 
 ### Ease of switching Heroku stacks
 
-If we want to change the stack from `cedar14` to a newer stack we can update our
+If we want to change the stack from `heroku:16-build` to a newer stack we can update our
 `Dockerfile` to build from the correct image provided by Heroku.
 
 ## How it works
@@ -43,7 +43,7 @@ then there is no guarantee that any shared libraries the compiler links to will
 be the same in Heroku. 
 
 To get around this we are building in a Docker image that is based on the Heroku
-`cedar14` image, our image then downloads the source tarball for xmlsec1 and
+`heroku:16-build` image, our image then downloads the source tarball for xmlsec1 and
 compiles it then tar's the output to stdout. This is redirected into a file
 outside of the docker container and into the local filesystem as `xmlsec.tar.gz`
 this file is committed into the repo.
@@ -61,15 +61,16 @@ The downside of this is that it expects you to have Docker installed locally.
 ## How to update the binary
 
 ```bash
-$ export VERSION=1.2.25 # or whatever the version you want to build
+$ export VERSION=1.2.26 # or whatever the version you want to build
+$ git rm *.sig
 $ make build
 $ make release
-$ git add xmlsec.*
+$ git add xmlsec* README.md
 $ git commit -m "update to version $VERSION"
-$ git tag -a $VERSION -m "update to latest version"
+$ git tag -a $VERSION -m "update to $VERSION"
 $ git push --follow-tags
 ```
 Then update your heroku application to use the buildpack with the tag you just
 set e.g:
 
-    https://github.com/uktrade/heroku-buildpack-xmlsec#1.2.25
+    https://github.com/uktrade/heroku-buildpack-xmlsec#1.2.26
