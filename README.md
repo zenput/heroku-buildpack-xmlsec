@@ -72,6 +72,6 @@ $ git tag -a $VERSION -m "update to $VERSION"
 $ git push --follow-tags
 ```
 Then update your heroku application to use the buildpack with the tag you just
-set e.g:
+set e.g: blah
 
     https://github.com/zenput/heroku-buildpack-xmlsec#1.2.37
